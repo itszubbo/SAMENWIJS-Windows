@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Name="SAMENWIJS"
+      Manufacturer="SAMENWIJS"
+      Version="1.0.0"
+      UpgradeCode="49b293f4-8732-4c66-9847-1e3c9c281ca0"
+      Scope="perUser">
+    <SummaryInformation Description="SAMENWIJS voor Windows" />
+    <MajorUpgrade DowngradeErrorMessage="Er staat al een nieuwere versie van SAMENWIJS op deze computer." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Icon Id="SAMENWIJSIcon" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="SAMENWIJSIcon" />
+
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="INSTALLFOLDER" Name="SAMENWIJS" />
+    </StandardDirectory>
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="3fa9d4d2-16a6-4c99-9e7c-02a9c46a04a0">
+        <Shortcut Id="SAMENWIJSDesktopShortcut" Name="SAMENWIJS" Description="Duidelijk wat komt. Ruimte om zelf te kiezen."
+                  Target="[#SAMENWIJSExe]" WorkingDirectory="INSTALLFOLDER" Icon="SAMENWIJSIcon" />
+        <RegistryValue Root="HKCU" Key="Software\SAMENWIJS" Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="StartMenuAppFolder" Name="SAMENWIJS">
+        <Component Id="StartMenuShortcut" Guid="5eb128a1-b2b0-4c65-9271-297d3fc44ab8">
+          <Shortcut Id="SAMENWIJSStartMenuShortcut" Name="SAMENWIJS" Description="Open SAMENWIJS"
+                    Target="[#SAMENWIJSExe]" WorkingDirectory="INSTALLFOLDER" Icon="SAMENWIJSIcon" />
+          <RemoveFolder Id="RemoveSAMENWIJSStartMenuFolder" On="uninstall" />
+          <RegistryValue Root="HKCU" Key="Software\SAMENWIJS" Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <Feature Id="MainFeature" Title="SAMENWIJS" Level="1">
+      <ComponentGroupRef Id="AppFiles" />
+      <ComponentRef Id="DesktopShortcut" />
+      <ComponentRef Id="StartMenuShortcut" />
+    </Feature>
+
+    <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+      <Component Id="SAMENWIJSExecutable" Guid="bb3d30e4-c3a4-487e-8e90-d5ca6d4ab63e">
+        <File Id="SAMENWIJSExe" Source="$(var.PublishDir)\SAMENWIJS.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="SAMENWIJSWebInterface" Guid="dcd14bc0-4310-43e2-9945-ae8a95106177">
+        <File Id="SAMENWIJSIndex" Source="$(var.PublishDir)\wwwroot\index.html" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Package>
+</Wix>

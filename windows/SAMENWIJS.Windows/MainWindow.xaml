@@ -1,0 +1,34 @@
+<Window x:Class="SAMENWIJS.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="SAMENWIJS" Icon="Assets/samenwijs.ico"
+        Width="1120" Height="860" MinWidth="780" MinHeight="650"
+        WindowStartupLocation="CenterScreen" Background="#F5F3ED"
+        Closing="MainWindow_Closing">
+    <Grid Background="#F5F3ED">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#F5F3ED" BorderBrush="#C9D7CF" BorderThickness="0,0,0,1" Padding="18,0">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="Assets/samenwijs.png" Width="34" Height="34" Margin="0,0,10,0" />
+                    <TextBlock Text="SAMENWIJS" FontSize="17" FontWeight="Bold" Foreground="#20312D" VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock Text="Duidelijk wat komt. Ruimte om zelf te kiezen."
+                           FontSize="13" Foreground="#4D5D57" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+            </DockPanel>
+        </Border>
+        <wv2:WebView2 x:Name="AppView" Grid.Row="1" DefaultBackgroundColor="#F5F3ED" />
+        <Border Grid.Row="2" Background="#F5F3ED" BorderBrush="#C9D7CF" BorderThickness="0,1,0,0" Padding="18,0">
+            <DockPanel>
+                <TextBlock x:Name="StatusText" Text="Je gegevens blijven op deze computer." FontSize="12" Foreground="#4D5D57" VerticalAlignment="Center" />
+                <TextBlock DockPanel.Dock="Right" Text="SAMENWIJS voor Windows" FontSize="12" Foreground="#4D5D57" VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
