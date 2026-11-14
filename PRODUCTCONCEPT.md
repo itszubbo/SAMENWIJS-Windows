@@ -90,7 +90,7 @@ De gebruiker kan één hoofdcontact en maximaal twee extra contacten bewaren. De
 - WebView2 Runtime vereist; app- en gebruikersgegevens blijven lokaal.
 - Voorlezen via een geïnstalleerde Nederlandse Windows-stem; alleen na een tik.
 - Activiteitsseintjes via een Windows-systeemvakmelding zolang de app actief is. De app herstelt toekomstige seintjes wanneer die opnieuw wordt geopend.
-- Android is uitgesteld; de Android-broncode blijft voorlopig beschikbaar in de repository.
+- Android is uitgesteld; deze Windows-repository bevat geen Android-build. Android staat op de planning voor later.
 
 ## Klaar voor gebruik betekent
 
