@@ -50,4 +50,4 @@ SAMENWIJS geeft geen medisch of financieel advies en vervangt geen begeleiding. 
 
 ## Android
 
-Android is uitgesteld. De Android-broncode staat voorlopig nog in de repository; de actuele desktopinstallatie is voor Windows.
+Android is uitgesteld. Deze Windows-repository bevat geen Android-build. Android staat op de planning voor later.
